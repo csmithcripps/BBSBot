@@ -113,13 +113,32 @@ class bbsRobot:
         self.m2a.duty_cycle = int(rm)
         
         
+    '''
+    Wait_For_Button
+    Blocks code until button press
 
+    '''
     def Wait_For_Button(self):
         while self.sw1.value == True:
             pass
         time.sleep(1)
 
+    '''
+    displayText
+    Displays text on screen
+    Default display of "BBS"
+    @params
+        text:       Text to display
+        x:          x position of text
+                        default: 0
+        y:          y position of text relative to top of screen
+                        default: 0
+        color:      text colout
+                        default: White (0xFFFFFF)
+        font:       text font
+                        default: terminalio.FONT
 
+    '''
     def displayText(self, text="BBS", x=0, y=0, color=0xFFFFFF, font=terminalio.FONT):       
         text_area = label.Label(font, text=text, color=color)
         text_area.height = 100
@@ -129,6 +148,22 @@ class bbsRobot:
         # Show it
         self.display.show(text_area)
 
+    '''
+    displayBBS
+    Displays BBS logo and text on screen
+    Default text  "BBS:\nBUILDING BLOCK STUDIO"
+    @params
+        text:       Text to display
+        x:          x position of text
+                        default: 0
+        y:          y position of text relative to top of screen
+                        default: 0
+        color:      text colout
+                        default: White (0xFFFFFF)
+        font:       text font
+                        default: terminalio.FONT
+
+    '''
     def displayBBS(self, text="BBS:\nBUILDING BLOCK STUDIO", x=0, y=60, color=0xFFFFFF, font=terminalio.FONT):
         # Setup the file as the bitmap data source
         bitmap = displayio.OnDiskBitmap(self.bitmap_file)
